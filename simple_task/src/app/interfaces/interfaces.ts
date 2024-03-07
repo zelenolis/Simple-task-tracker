@@ -1,25 +1,25 @@
 export interface TaskList {
-  items: Tasks[]
+    items: Tasks[]
 }
 
 export interface Tasks {
-  id: string,
-  title: string,
-  name: string,
-  deadline: string,
-  priority: Priorities,
-  status: Statuses,
-  executor: string
+    id: string,
+    title: string,
+    name: string,
+    deadline: string,
+    priority: Priorities,
+    status: Statuses,
+    executor: string
 }
 
 export enum Statuses {
-  new = "new",
-  inProgress = "in progress",
-  completed = "completed"
+    new = "new",
+    inProgress = "in progress",
+    completed = "completed"
 }
 
 export enum Priorities {
-  low = "low",
-  neutral = "neutral",
-  high = "high"
+    low = "low",
+    neutral = "neutral",
+    high = "high"
 }
