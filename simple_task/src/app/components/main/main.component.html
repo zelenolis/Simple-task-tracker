@@ -1,8 +1,9 @@
 <app-header></app-header>
+<app-sort-panel></app-sort-panel>
 <div class="main">
   <div *ngIf="(allTasks$ | async) as tasks">
     <ng-container *ngIf="tasks.length; else notasks">
-      <div *ngFor="let task of tasks">
+      <div *ngFor="let task of tasks | sorting: sortingService.getsortType()">
         <app-task [task]="task"></app-task>
       </div>
     </ng-container>

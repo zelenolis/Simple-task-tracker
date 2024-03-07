@@ -1,0 +1,29 @@
+.wrapper_sort {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sort {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  & h4 {
+    color: var(--main);
+    font-family: head;
+  }
+
+  & button {
+    background-color: var(--background);
+    border: none;
+    color: var(--main);
+
+    &:hover {
+      cursor: pointer;
+      font-weight: 600;
+    }
+  }
+}

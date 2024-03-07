@@ -23,3 +23,10 @@ export enum Priorities {
     neutral = "neutral",
     high = "high"
 }
+
+export enum SortTypes {
+  default = "default",
+  status = "status",
+  executor = "executor",
+  deadline = "deadline",
+}
