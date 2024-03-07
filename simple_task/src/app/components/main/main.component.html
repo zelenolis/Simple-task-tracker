@@ -1,9 +1,13 @@
 <app-header></app-header>
 <div class="main">
-  <div class="main_tasks">
-    <div *ngFor="let task of allTasks$ | async">
-      <app-task></app-task>
-    </div>
+  <div *ngIf="(allTasks$ | async) as tasks">
+    <ng-container *ngIf="tasks.length; else notasks">
+      <div *ngFor="let task of tasks">
+        <app-task [task]="task"></app-task>
+      </div>
+    </ng-container>
+    <ng-template #notasks>
+      <p>there are no tasks at the moment</p>
+    </ng-template>
   </div>
 </div>
-<p>main works!</p>

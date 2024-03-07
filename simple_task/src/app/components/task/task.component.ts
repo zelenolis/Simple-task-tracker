@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Priorities, Statuses, Tasks } from '../../interfaces/interfaces';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-task',
@@ -9,6 +10,9 @@ import { Priorities, Statuses, Tasks } from '../../interfaces/interfaces';
   styleUrl: './task.component.scss'
 })
 export class TaskComponent {
+
+  private readonly router = inject(Router);
+
   @Input()
     task: Tasks = {
       id: '',
@@ -18,5 +22,9 @@ export class TaskComponent {
       priority: Priorities.low,
       status: Statuses.new,
       executor: ''
+    }
+
+    onOpen(id: string) {
+      this.router.navigate(["./task", id]);
     }
 }
