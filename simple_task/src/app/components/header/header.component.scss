@@ -1,0 +1,44 @@
+.header {
+  width: 100vw;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header_logo {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & img  {
+    width: 30px;
+    height: 30px;
+    padding: 0 10px;
+  }
+
+  & h2 {
+    font-family: head;
+    background-color: var(--background);
+  }
+}
+
+.header_add {
+  padding: 0 10px;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--main);
+  }
+}
+
+.header_logout {
+  padding: 0 10px;
+  font-weight: 200;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: 400;
+  }
+}

@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --main: #689695;
+  --background: #F5F4FE;
+}
+
+@font-face {
+  font-family: head;
+  src: url('./assets/catamaran.ttf');
+}
+
+@font-face {
+  font-family: body;
+  src: url('./assets/merriweather.ttf');
+}
+
+html {
+  font-family: body;
+  background-color: var(--background);
+
+}
+
+body {
+  margin: 0;
+}
