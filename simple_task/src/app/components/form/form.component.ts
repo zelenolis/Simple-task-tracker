@@ -8,6 +8,7 @@ import { Store } from "@ngrx/store";
 
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
 import { addTaskAction } from "../../ngrx-store/task_actions";
+import { MatSnackBar } from "@angular/material/snack-bar";
 
 // generate ID for new task
 function genRanHex(val: number) {
@@ -24,6 +25,7 @@ function genRanHex(val: number) {
 export class FormComponent {
     private readonly store = inject(Store);
     private readonly router = inject(Router);
+    private readonly matSnackBar = inject(MatSnackBar);
     private readonly size = 8; // digits in task's ID
 
     public today = new Date().toISOString().split("T")[0];
@@ -52,6 +54,11 @@ export class FormComponent {
         };
 
         this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
+
+        this.matSnackBar.open("task created", "OK", {
+          duration: 3000,
+        });
+
         this.router.navigate([""]);
     }
 }

@@ -1,5 +1,4 @@
-<app-header></app-header>
-<app-sort-panel></app-sort-panel>
+<app-control-panel></app-control-panel>
 <div class="main">
   <div *ngIf="(allTasks$ | async) as tasks">
     <ng-container *ngIf="tasks.length; else notasks">

@@ -24,22 +24,3 @@
     background-color: var(--background);
   }
 }
-
-.header_add {
-  padding: 0 10px;
-
-  &:hover {
-    cursor: pointer;
-    color: var(--main);
-  }
-}
-
-.header_logout {
-  padding: 0 10px;
-  font-weight: 200;
-
-  &:hover {
-    cursor: pointer;
-    font-weight: 400;
-  }
-}

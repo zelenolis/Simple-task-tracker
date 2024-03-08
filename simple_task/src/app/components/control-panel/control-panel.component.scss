@@ -1,11 +1,11 @@
-.wrapper_sort {
+.wrapper_control {
   width: 100vw;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
-.sort {
+.control {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -25,5 +25,25 @@
       cursor: pointer;
       font-weight: 600;
     }
+  }
+}
+
+.control_add {
+  padding: 0 10px;
+
+  &:hover {
+    cursor: pointer;
+    color: var(--orange);
+  }
+}
+
+.control_logout {
+  padding: 0 10px;
+  font-weight: 200;
+
+  &:hover {
+    cursor: pointer;
+    font-weight: 400;
+    color: var(--rose);
   }
 }

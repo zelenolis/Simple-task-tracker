@@ -12,8 +12,8 @@ import { Router, RouterLink } from "@angular/router";
     styleUrl: "./login.component.scss"
 })
 export class LoginComponent {
-  private router = inject(Router);
-  private matSnackBar = inject(MatSnackBar);
+  private readonly router = inject(Router);
+  private readonly matSnackBar = inject(MatSnackBar);
 
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required]),
@@ -32,7 +32,7 @@ export class LoginComponent {
 
     this.matSnackBar.open("logged succesfully", "OK", {
       duration: 3000,
-    })
+    });
 
     this.router.navigate([""]);
 
