@@ -1,16 +1,34 @@
 <div class="task_wrapper">
   <div class="task">
     <div class="task_sheet" *ngIf="(taskSheet$ | async) as task; else notasks">
-      <h4>{{ task.title }}</h4>
-      <p>{{ task.name }}</p>
-      <p>{{ task.deadline }}</p>
-      <p>{{ task.priority }}</p>
-      <p>{{ task.status }}</p>
-      <p>{{ task.executor }}</p>
-      <div class="task_sheet_controls">
-        <button class="task_change" (click)="onChange()">change</button>
-        <button class="task_change" (click)="onDelete()">delete</button>
-      </div>
+      <h4>Title: {{ task.title }}</h4>
+      <p>Name: {{ task.name }}</p>
+      <p>Deadline: {{ task.deadline }}</p>
+      <p>Priority: {{ task.priority }}</p>
+      <ng-container *ngIf="changeOpen; else change">
+        <p>Status: {{ task.status }}</p>
+        <p>Executor(s): {{ task.executor }}</p>
+        <div class="task_sheet_controls">
+          <button class="task_change" (click)="onChange()">change</button>
+          <button class="task_change" (click)="onDelete()">delete</button>
+        </div>
+      </ng-container>
+      <ng-template #change>
+        <div class="task_inputs">
+          <label for="executor">Executor(s): </label>
+          <input id="executor" type="text" required #executors>
+        </div>
+        <div class="task_inputs">
+          <label for="status">Status: </label>
+          <select id="status" type="status" #stat required>
+            <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+        <div class="task_sheet_controls">
+          <button class="task_change" (click)="onChangeConfirm(executors.value, stat.value, task)">confirm</button>
+          <button class="task_change" (click)="onCancel()">cancel</button>
+        </div>
+      </ng-template>
     </div>
     <ng-template #notasks>
       <p>Task not found</p>

@@ -51,3 +51,10 @@
   margin: 5px;
   padding: 5px;
 }
+
+.task_inputs {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
