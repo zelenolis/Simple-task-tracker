@@ -15,6 +15,22 @@
   }
 }
 
+.form_close {
+  margin-left: 20px;
+  color: var(--orange);
+  background: var(--background);
+  border: none;
+  font-size: 2rem;
+  transform: rotate(45deg);
+  transition: 0.3s;
+
+  &:hover {
+    cursor: pointer;
+    transform: rotate(90deg);
+    transition: 0.3s;
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;

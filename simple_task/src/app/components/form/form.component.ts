@@ -9,10 +9,11 @@ import { Store } from "@ngrx/store";
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
 import { addTaskAction } from "../../ngrx-store/task_actions";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import { TaskManagementService } from "../../services/task-management.service";
 
 // generate ID for new task
 function genRanHex(val: number) {
-    return [...Array(val)].map(() => Math.floor(Math.random() * 16).toString(16)).join("");
+    return 'id-' + [...Array(val)].map(() => Math.floor(Math.random() * 16).toString(16)).join("");
 }
 
 @Component({
@@ -25,6 +26,7 @@ function genRanHex(val: number) {
 export class FormComponent {
     private readonly store = inject(Store);
     private readonly router = inject(Router);
+    private readonly taskManagementService = inject(TaskManagementService);
     private readonly matSnackBar = inject(MatSnackBar);
     private readonly size = 8; // digits in task's ID
 
@@ -42,6 +44,10 @@ export class FormComponent {
         executor: new FormControl("", [Validators.required])
     });
 
+    onBack() {
+      this.router.navigate([""]);
+    }
+
     onSubmit() {
         const taskSubmit: Tasks = {
             id: genRanHex(this.size) as string,
@@ -54,9 +60,10 @@ export class FormComponent {
         };
 
         this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
+        this.taskManagementService.sendTaskToServer(taskSubmit);
 
         this.matSnackBar.open("task created", "OK", {
-          duration: 3000,
+          duration: 2000,
         });
 
         this.router.navigate([""]);

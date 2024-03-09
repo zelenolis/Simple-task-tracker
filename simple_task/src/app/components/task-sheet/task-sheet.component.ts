@@ -1,12 +1,13 @@
-import { Component, DestroyRef, inject } from "@angular/core";
+import { Component, inject } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { takeUntilDestroyed } from "@angular/core/rxjs-interop";
 import { Store } from "@ngrx/store";
 import { selectTaskById } from "../../ngrx-store/task_selector";
 import { CommonModule, NgIf } from "@angular/common";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { removeTaskAction, updateTaskAction } from "../../ngrx-store/task_actions";
 import { Statuses, Tasks } from "../../interfaces/interfaces";
+import { TaskManagementService } from "../../services/task-management.service";
+import { take } from "rxjs";
 
 @Component({
     selector: "app-task-sheet",
@@ -19,8 +20,8 @@ export class TaskSheetComponent {
     private readonly taskId = inject(ActivatedRoute);
     private readonly store = inject(Store);
     private readonly router = inject(Router);
+    private readonly taskManagementService = inject(TaskManagementService);
     private readonly matSnackBar = inject(MatSnackBar);
-    private readonly destroyRef = inject(DestroyRef);
 
     public taskSheet$ = this.store.select(selectTaskById(this.taskId.snapshot.paramMap.get("id") as string));
     public statusOptions = [Statuses.new, Statuses.inProgress, Statuses.completed];
@@ -50,7 +51,8 @@ export class TaskSheetComponent {
         status: stat as Statuses,
         executor: executors
       }
-      this.store.dispatch(updateTaskAction({taskId: task.id, updTask: updTask}))
+      this.store.dispatch(updateTaskAction({taskId: task.id, updTask: updTask}));
+      this.taskManagementService.sendUpdateToServer(task.id, updTask);
       this.matSnackBar.open("Task changed", "OK", {
         duration: 2000,
       });
@@ -61,9 +63,11 @@ export class TaskSheetComponent {
       let mySnackBar = this.matSnackBar.open('Confirm : ', 'Delete', {duration: 5000});
 
       mySnackBar.onAction()
-        .pipe(takeUntilDestroyed(this.destroyRef))
+        .pipe(take(1))
         .subscribe(() => {
-          this.store.dispatch(removeTaskAction({ taskId: this.taskId.snapshot.paramMap.get("id") as string }));
+          const id = this.taskId.snapshot.paramMap.get("id") as string;
+          this.store.dispatch(removeTaskAction({ taskId: id }));
+          this.taskManagementService.deleteTaskFromServer(id);
           mySnackBar.dismiss();
           this.router.navigate([""]);
         });
