@@ -1,13 +1,15 @@
 <div class="task_wrapper">
   <div class="task">
     <div class="task_sheet" *ngIf="(taskSheet$ | async) as task; else notasks">
-      <h4>Title: {{ task.title }}</h4>
-      <p>Name: {{ task.name }}</p>
+      <h4 class="task_nowrap">Title: {{ task.title }}</h4>
+      <p class="task_nowrap">Name: <br>
+        {{ task.name }}</p>
       <p>Deadline: {{ task.deadline }}</p>
       <p>Priority: {{ task.priority }}</p>
       <ng-container *ngIf="changeOpen; else change">
         <p>Status: {{ task.status }}</p>
-        <p>Executor(s): {{ task.executor }}</p>
+        <p class="task_nowrap">Executor(s): <br>
+          {{ task.executor }}</p>
         <div class="task_sheet_controls">
           <button class="task_change" (click)="onChange()">change</button>
           <button class="task_change" (click)="onDelete()">delete</button>

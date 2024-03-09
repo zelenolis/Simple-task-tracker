@@ -4,6 +4,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  max-width: 800px;
 }
 
 .header_logo {
@@ -22,5 +25,10 @@
     font-family: head;
     color: var(--main);
     background-color: var(--background);
+
+    @media screen and (max-width: 600px) {
+      margin: 1vh;
+    }
+
   }
 }

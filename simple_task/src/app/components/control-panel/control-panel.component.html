@@ -1,11 +1,14 @@
 <div class="wrapper_control">
-  <div class="control">
-    <h4>Sort tasks by:</h4>
-    <button class="control_button" (click)="onDefault()">default</button>
-    <button class="control_button" (click)="onStatus()">status</button>
-    <button class="control_button" (click)="onDeadline()">deadline</button>
-    <button class="control_button" (click)="onExecutor()">executor</button>
+  <button class="control_open" (click)="menuOpen()">{{menu}}</button>
+  <div class="control {{menu}}">
+    <div class="control_sort">
+      <h4>Sort tasks by:</h4>
+      <button class="control_button" (click)="onDefault()">default</button>
+      <button class="control_button" (click)="onStatus()">status</button>
+      <button class="control_button" (click)="onDeadline()">deadline</button>
+      <button class="control_button" (click)="onExecutor()">executor</button>
+    </div>
+    <div class="control_add" (click)="addNewTask()">new task</div>
+    <div class="control_logout" (click)="onLogout()">Logout</div>
   </div>
-  <div class="control_add" (click)="addNewTask()">new task</div>
-  <div class="control_logout" (click)="onLogout()">Logout</div>
 </div>

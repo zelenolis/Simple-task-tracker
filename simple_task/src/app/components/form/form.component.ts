@@ -5,7 +5,6 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-import {MatTooltipModule} from '@angular/material/tooltip';
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
 import { addTaskAction } from "../../ngrx-store/task_actions";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -19,7 +18,7 @@ function genRanHex(val: number) {
 @Component({
     selector: "app-form",
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, NgFor, MatTooltipModule],
+    imports: [ReactiveFormsModule, NgIf, NgFor],
     templateUrl: "./form.component.html",
     styleUrl: "./form.component.scss"
 })
@@ -49,23 +48,25 @@ export class FormComponent {
     }
 
     onSubmit() {
-        const taskSubmit: Tasks = {
-            id: genRanHex(this.size) as string,
-            title: this.newTask.value.title as string,
-            name: this.newTask.value.name as string,
-            deadline: this.newTask.value.deadline as string,
-            priority: this.newTask.value.priority as Priorities,
-            status: this.newTask.value.status as Statuses,
-            executor: this.newTask.value.executor as string,
-        };
+      if (this.newTask.invalid) { return }
 
-        this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
-        this.taskManagementService.sendTaskToServer(taskSubmit);
+      const taskSubmit: Tasks = {
+          id: genRanHex(this.size) as string,
+          title: this.newTask.value.title as string,
+          name: this.newTask.value.name as string,
+          deadline: this.newTask.value.deadline as string,
+          priority: this.newTask.value.priority as Priorities,
+          status: this.newTask.value.status as Statuses,
+          executor: this.newTask.value.executor as string,
+      };
 
-        this.matSnackBar.open("task created", "OK", {
-          duration: 2000,
-        });
+      this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
+      this.taskManagementService.sendTaskToServer(taskSubmit);
 
-        this.router.navigate([""]);
+      this.matSnackBar.open("task created", "OK", {
+        duration: 2000,
+      });
+
+      this.router.navigate([""]);
     }
 }

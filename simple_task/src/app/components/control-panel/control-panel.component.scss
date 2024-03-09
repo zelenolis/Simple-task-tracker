@@ -1,11 +1,64 @@
 .wrapper_control {
   width: 100vw;
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 95%;
+  margin: auto;
+  max-width: 800px;
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.control_open {
+  position: absolute;
+  top: 2.3vh;
+  right: 2vw;
+  background: none;
+  border: none;
+  color: var(--main);
+  font-family: head;
+
+  @media screen and (min-width: 601px) {
+    display: none;
+  }
+  @media screen and (max-width: 600px) {
+    display: block;
+  }
 }
 
 .control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+
+  @media screen and (max-width: 600px) {
+    position: absolute;
+    flex-direction: column;
+    width: 50%;
+    top: 8vh;
+    right: -100%;
+    transition: 0.3s;
+    background-color: var(--background2);
+    z-index: 5;
+  }
+
+}
+
+.Close {
+  right: 0;
+  transition: 0.3s;
+  align-items: flex-end;
+  padding-right: 5vw;
+}
+
+.control_sort {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,10 +67,15 @@
   & h4 {
     color: var(--main);
     font-family: head;
+
+    @media screen and (max-width: 600px) {
+      padding-top: 1vh;
+      color: var(--rose);
+    }
   }
 
   & button {
-    background-color: var(--background);
+    background: none;
     border: none;
     color: var(--main);
 
@@ -25,16 +83,38 @@
       cursor: pointer;
       font-weight: 600;
     }
+
+    @media screen and (max-width: 600px) {
+      padding: 1vh 0;
+      font-size: 0.9rem;
+    }
+
+  }
+
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-end;
+
+    & h4 {
+      margin: 0;
+    }
   }
 }
 
 .control_add {
   padding: 0 10px;
+  font-weight: 800;
+  color: var(--main);
 
   &:hover {
     cursor: pointer;
     color: var(--orange);
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 2vh 0;
+  }
+
 }
 
 .control_logout {
@@ -46,4 +126,9 @@
     font-weight: 400;
     color: var(--rose);
   }
+
+  @media screen and (max-width: 600px) {
+    padding: 2vh 0;
+  }
+
 }

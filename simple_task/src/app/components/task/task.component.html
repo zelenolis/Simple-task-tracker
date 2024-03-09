@@ -1,6 +1,9 @@
 <div class="wrapper_task" (click)="onOpen(task.id)" matTooltip="{{task.priority}} priority" matTooltipPosition="above">
-  <h4 appColoredTitle [priority]="task.priority">{{task.title}}</h4>
-  <h4>{{task.executor}}</h4>
-  <h4>{{task.status}}</h4>
-  <p>{{task.deadline}}</p>
+  <h4 class="task_nowrap" appColoredTitle [priority]="task.priority">{{task.title}}</h4>
+  <p class="task_nowrap">{{task.executor}}</p>
+  <p>{{task.status}}</p>
+  <div class="task_deadline">
+    <p>deadline:</p>
+    <p>{{task.deadline}}</p>
+  </div>
 </div>

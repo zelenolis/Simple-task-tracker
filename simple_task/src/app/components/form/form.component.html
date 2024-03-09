@@ -48,8 +48,11 @@
           <span *ngIf='executor.hasError("required")' class="form_error">required</span>
         </ng-container>
       </div>
-      <button class="form_button" type="submit" [disabled]="newTask.invalid">submit</button>
+      <div class="form_buttons">
+        <button class="form_button" (click)="onBack()">close</button>
+        <button class="form_button" type="submit" [disabled]="newTask.invalid">submit</button>
+      </div>
     </form>
   </div>
-  <button class="form_close" (click)="onBack()" matTooltip="Close" matTooltipPosition="above">+</button>
+
 </div>
