@@ -3,6 +3,10 @@ Simple task tracker written in Angular
 
 Deploy: [link](https://simpletracker.netlify.app/)
 
+Screenshots:
+![screenshot1](https://github.com/zelenolis/Simple-task-tracker/blob/dev/simple_task/src/assets/Screenshot_20240309_205641_Chrome.jpg?raw=true)
+![screenshot1](https://github.com/zelenolis/Simple-task-tracker/blob/dev/simple_task/src/assets/Screenshot_20240309_205240_Chrome.jpg?raw=true)
+
 ### Task:
 Creating a simple task tracker.
 Stack: Angular 17, RxJs, NgRx, Typescript, Angular Material, SCSS.
