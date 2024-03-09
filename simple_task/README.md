@@ -1,27 +1,24 @@
-# SimpleTask
+# Simple task tracker
+Simple task tracker written in Angular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.6.
+Deploy: [link](https://simpletracker.netlify.app/)
 
-## Development server
+### Task:
+Creating a simple task tracker.
+Stack: Angular 17, RxJs, NgRx, Typescript, Angular Material, SCSS.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Features:
+- creating task (with title, name, priority, status, executor(s) and deadline fields),
+- updating task (status and executos(s) can be changed),
+- task's detailed info (on a separate page),
+- iplemented an imitation of receiving data from the server (local storage is used as a server),
+- login page and guards are implemented (for simplicity, fields are not checked and an inputed data is not saved anywhere),
+- logout also clears all local storage's data.
 
-## Code scaffolding
+### Development server
+- select target with: `cd simple_task`,
+- run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Build
+- select target with: `cd simple_task`,
+- run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
