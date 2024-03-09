@@ -1,12 +1,13 @@
 import { Component, inject, Input } from "@angular/core";
 import { Router } from "@angular/router";
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
+import { ColoredTitleDirective } from '../../directives/colored-title.directive';
 
 @Component({
     selector: "app-task",
     standalone: true,
-    imports: [],
+    imports: [MatTooltipModule, ColoredTitleDirective],
     templateUrl: "./task.component.html",
     styleUrl: "./task.component.scss"
 })

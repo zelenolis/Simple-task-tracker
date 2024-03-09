@@ -4,6 +4,7 @@ import { Store } from "@ngrx/store";
 import { selectTaskById } from "../../ngrx-store/task_selector";
 import { CommonModule, NgIf } from "@angular/common";
 import { MatSnackBar } from "@angular/material/snack-bar";
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { removeTaskAction, updateTaskAction } from "../../ngrx-store/task_actions";
 import { Statuses, Tasks } from "../../interfaces/interfaces";
 import { TaskManagementService } from "../../services/task-management.service";
@@ -12,7 +13,7 @@ import { take } from "rxjs";
 @Component({
     selector: "app-task-sheet",
     standalone: true,
-    imports: [CommonModule, NgIf],
+    imports: [CommonModule, NgIf, MatTooltipModule],
     templateUrl: "./task-sheet.component.html",
     styleUrl: "./task-sheet.component.scss"
 })

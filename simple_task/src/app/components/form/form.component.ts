@@ -5,7 +5,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
 import { addTaskAction } from "../../ngrx-store/task_actions";
 import { MatSnackBar } from "@angular/material/snack-bar";
@@ -19,7 +19,7 @@ function genRanHex(val: number) {
 @Component({
     selector: "app-form",
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, NgFor],
+    imports: [ReactiveFormsModule, NgIf, NgFor, MatTooltipModule],
     templateUrl: "./form.component.html",
     styleUrl: "./form.component.scss"
 })

@@ -1,55 +1,55 @@
-<div class="wrapper_form">
-  <div>
+<div class="wrapper">
+  <div class="wrapper_form">
     <h3>Add new task</h3>
-    <button class="form_close" (click)="onBack()">+</button>
+    <form class="form" [formGroup]="newTask" name="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form_filed">
+        <label for="title">Title</label>
+        <input id="title" type="title" formControlName="title" placeholder="Tasks title">
+        <ng-container *ngIf='(newTask.get("title")?.dirty || newTask.get("title")?.touched) && newTask.get("title") as title'>
+          <span *ngIf='title.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <div class="form_filed">
+        <label for="name">Name</label>
+        <input id="name" type="name" formControlName="name" placeholder="Name of the task">
+        <ng-container *ngIf='(newTask.get("name")?.dirty || newTask.get("name")?.touched) && newTask.get("name") as name'>
+          <span *ngIf='name.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <div class="form_filed">
+        <label for="deadline">Deadline</label>
+        <input id="deadline" type="date" min={{today}} formControlName="deadline">
+        <ng-container *ngIf='(newTask.get("deadline")?.dirty || newTask.get("deadline")?.touched) && newTask.get("deadline") as deadline'>
+          <span *ngIf='deadline.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <div class="form_filed">
+        <label for="priority">Priority</label>
+        <select id="priority" type="priority" formControlName="priority">
+          <option *ngFor="let option of priorityOptions" [value]="option">{{ option }}</option>
+        </select>
+        <ng-container *ngIf='(newTask.get("priority")?.dirty || newTask.get("priority")?.touched) && newTask.get("priority") as priority'>
+          <span *ngIf='priority.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <div class="form_filed">
+        <label for="status">Status</label>
+        <select id="status" type="status" formControlName="status">
+          <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
+        </select>
+        <ng-container *ngIf='(newTask.get("status")?.dirty || newTask.get("status")?.touched) && newTask.get("status") as status'>
+          <span *ngIf='status.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <div class="form_filed">
+        <label for="executor">Executor</label>
+        <input id="executor" type="executor" formControlName="executor">
+        <ng-container *ngIf='(newTask.get("executor")?.dirty || newTask.get("executor")?.touched) && newTask.get("executor") as executor'>
+          <span *ngIf='executor.hasError("required")' class="form_error">required</span>
+        </ng-container>
+      </div>
+      <button class="form_button" type="submit" [disabled]="newTask.invalid">submit</button>
+    </form>
   </div>
-  <form class="form" [formGroup]="newTask" name="loginForm" (ngSubmit)="onSubmit()">
-    <div class="form_filed">
-      <label for="title">Title</label>
-      <input id="title" type="title" formControlName="title" placeholder="Tasks title">
-      <ng-container *ngIf='(newTask.get("title")?.dirty || newTask.get("title")?.touched) && newTask.get("title") as title'>
-        <span *ngIf='title.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <div class="form_filed">
-      <label for="name">Name</label>
-      <input id="name" type="name" formControlName="name" placeholder="Name of the task">
-      <ng-container *ngIf='(newTask.get("name")?.dirty || newTask.get("name")?.touched) && newTask.get("name") as name'>
-        <span *ngIf='name.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <div class="form_filed">
-      <label for="deadline">Deadline</label>
-      <input id="deadline" type="date" min={{today}} formControlName="deadline">
-      <ng-container *ngIf='(newTask.get("deadline")?.dirty || newTask.get("deadline")?.touched) && newTask.get("deadline") as deadline'>
-        <span *ngIf='deadline.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <div class="form_filed">
-      <label for="priority">Priority</label>
-      <select id="priority" type="priority" formControlName="priority">
-        <option *ngFor="let option of priorityOptions" [value]="option">{{ option }}</option>
-      </select>
-      <ng-container *ngIf='(newTask.get("priority")?.dirty || newTask.get("priority")?.touched) && newTask.get("priority") as priority'>
-        <span *ngIf='priority.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <div class="form_filed">
-      <label for="status">Status</label>
-      <select id="status" type="status" formControlName="status">
-        <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
-      </select>
-      <ng-container *ngIf='(newTask.get("status")?.dirty || newTask.get("status")?.touched) && newTask.get("status") as status'>
-        <span *ngIf='status.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <div class="form_filed">
-      <label for="executor">Executor</label>
-      <input id="executor" type="executor" formControlName="executor">
-      <ng-container *ngIf='(newTask.get("executor")?.dirty || newTask.get("executor")?.touched) && newTask.get("executor") as executor'>
-        <span *ngIf='executor.hasError("required")' class="form_error">required</span>
-      </ng-container>
-    </div>
-    <button class="form_button" type="submit" [disabled]="newTask.invalid">submit</button>
-  </form>
+  <button class="form_close" (click)="onBack()" matTooltip="Close" matTooltipPosition="above">+</button>
 </div>
