@@ -4,6 +4,7 @@ Simple task tracker written in Angular
 Deploy: [link](https://simpletracker.netlify.app/)
 
 Screenshots:
+
 ![screenshot1](https://github.com/zelenolis/Simple-task-tracker/blob/dev/simple_task/src/assets/screenshots.jpg?raw=true)
 
 ### Task:
