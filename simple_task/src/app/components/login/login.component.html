@@ -1,0 +1,22 @@
+<div class="login_wrapper">
+  <h2 class="login_header">Login to proceed</h2>
+  <form class="login_form" [formGroup]="loginForm" name="loginForm" (ngSubmit)="onSubmit()">
+    <div class="login_fields">
+      <label for="email">e-mail</label>
+      <input id="email" type="email" formControlName="email" placeholder="mail@example.org" autocomplete="on">
+      <ng-container
+        *ngIf='(loginForm.get("email")?.dirty || loginForm.get("email")?.touched) && loginForm.get("email") as email'>
+        <span *ngIf='email.hasError("required")' class="reg_error">required</span>
+      </ng-container>
+    </div>
+    <div class="login_fields">
+      <label for="password">password</label>
+      <input id="password" type="password" formControlName="password" placeholder="********">
+      <ng-container
+        *ngIf='(loginForm.get("password")?.dirty || loginForm.get("password")?.touched) && loginForm.get("password") as password'>
+        <span *ngIf='password.hasError("required")' class="reg_error">required</span>
+      </ng-container>
+    </div>
+    <button class="login_button" type="submit" [disabled]="loginForm.invalid">submit</button>
+  </form>
+</div>

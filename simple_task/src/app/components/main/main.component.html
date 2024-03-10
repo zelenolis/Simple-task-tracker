@@ -1,0 +1,13 @@
+<app-control-panel></app-control-panel>
+<div class="main">
+  <div *ngIf="(allTasks$ | async) as tasks">
+    <ng-container *ngIf="tasks.length; else notasks">
+      <div *ngFor="let task of tasks | sorting: sortingService.getsortType()">
+        <app-task [task]="task"></app-task>
+      </div>
+    </ng-container>
+    <ng-template #notasks>
+      <p>there are no tasks at the moment</p>
+    </ng-template>
+  </div>
+</div>

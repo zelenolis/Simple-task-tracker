@@ -1,0 +1,40 @@
+<div class="task_wrapper">
+  <div class="task">
+    <div class="task_sheet" *ngIf="(taskSheet$ | async) as task; else notasks">
+      <h4 class="task_nowrap">Title: {{ task.title }}</h4>
+      <p class="task_nowrap">Name: <br>
+        {{ task.name }}</p>
+      <p>Deadline: {{ task.deadline }}</p>
+      <p>Priority: {{ task.priority }}</p>
+      <ng-container *ngIf="changeOpen; else change">
+        <p>Status: {{ task.status }}</p>
+        <p class="task_nowrap">Executor(s): <br>
+          {{ task.executor }}</p>
+        <div class="task_sheet_controls">
+          <button class="task_change" (click)="onChange()">change</button>
+          <button class="task_change" (click)="onDelete()">delete</button>
+        </div>
+      </ng-container>
+      <ng-template #change>
+        <div class="task_inputs">
+          <label for="executor">Executor(s): </label>
+          <input id="executor" type="text" required #executors>
+        </div>
+        <div class="task_inputs">
+          <label for="status">Status: </label>
+          <select id="status" type="status" #stat required>
+            <option *ngFor="let option of statusOptions" [value]="option">{{ option }}</option>
+          </select>
+        </div>
+        <div class="task_sheet_controls">
+          <button class="task_change" (click)="onChangeConfirm(executors.value, stat.value, task)">confirm</button>
+          <button class="task_change" (click)="onCancel()">cancel</button>
+        </div>
+      </ng-template>
+    </div>
+    <ng-template #notasks>
+      <p>Task not found</p>
+    </ng-template>
+    <button class="task_close" (click)="onBack()" matTooltip="Close" matTooltipPosition="above">+</button>
+  </div>
+</div>

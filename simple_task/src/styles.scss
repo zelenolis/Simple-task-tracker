@@ -1,0 +1,34 @@
+@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --main: #689695;
+  --background: #F5F4FE;
+  --background2: #E3E7E1;
+  --gray: #899293;
+  --orange: #C6973B;
+  --rose: #F6CAB7;
+  --error: red;
+}
+
+@font-face {
+  font-family: head;
+  src: url('./assets/catamaran.ttf');
+}
+
+@font-face {
+  font-family: body;
+  src: url('./assets/merriweather.ttf');
+}
+
+html {
+  font-family: body;
+  background-color: var(--background);
+
+}
+
+body {
+  margin: 0;
+}

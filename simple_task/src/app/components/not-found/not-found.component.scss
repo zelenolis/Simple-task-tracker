@@ -1,0 +1,12 @@
+.notfound {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & p {
+    font-family: head;
+    font-size: 3rem;
+    color: var(--main);
+    text-align: center;
+  }
+}
