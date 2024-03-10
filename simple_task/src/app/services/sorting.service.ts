@@ -1,20 +1,19 @@
-import { Injectable } from '@angular/core';
-import { SortTypes } from '../interfaces/interfaces';
+import { Injectable } from "@angular/core";
+
+import { SortTypes } from "../interfaces/interfaces";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: "root"
 })
 
 export class SortingService {
+    private type: SortTypes = SortTypes.default;
 
-  private type: SortTypes = SortTypes.default;
+    setsortType(val: SortTypes) {
+        this.type = val;
+    }
 
-  setsortType(val: SortTypes) {
-    this.type = val;
-  }
-
-  getsortType() {
-    return this.type;
-  }
-
+    getsortType() {
+        return this.type;
+    }
 }

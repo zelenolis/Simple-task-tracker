@@ -1,18 +1,19 @@
 import { NgFor, NgIf } from "@angular/common";
-import { Component, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import {
     FormControl, FormGroup, ReactiveFormsModule, Validators
 } from "@angular/forms";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
+
 import { Priorities, Statuses, Tasks } from "../../interfaces/interfaces";
 import { addTaskAction } from "../../ngrx-store/task_actions";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { TaskManagementService } from "../../services/task-management.service";
 
-// generate ID for new task
+// generate ID for new task, as if this value was received from the server
 function genRanHex(val: number) {
-    return 'id-' + [...Array(val)].map(() => Math.floor(Math.random() * 16).toString(16)).join("");
+    return `id-${[...Array(val)].map(() => Math.floor(Math.random() * 16).toString(16)).join("")}`;
 }
 
 @Component({
@@ -20,7 +21,8 @@ function genRanHex(val: number) {
     standalone: true,
     imports: [ReactiveFormsModule, NgIf, NgFor],
     templateUrl: "./form.component.html",
-    styleUrl: "./form.component.scss"
+    styleUrl: "./form.component.scss",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FormComponent {
     private readonly store = inject(Store);
@@ -44,29 +46,29 @@ export class FormComponent {
     });
 
     onBack() {
-      this.router.navigate([""]);
+        this.router.navigate([""]);
     }
 
     onSubmit() {
-      if (this.newTask.invalid) { return }
+        if (this.newTask.invalid) { return; }
 
-      const taskSubmit: Tasks = {
-          id: genRanHex(this.size) as string,
-          title: this.newTask.value.title as string,
-          name: this.newTask.value.name as string,
-          deadline: this.newTask.value.deadline as string,
-          priority: this.newTask.value.priority as Priorities,
-          status: this.newTask.value.status as Statuses,
-          executor: this.newTask.value.executor as string,
-      };
+        const taskSubmit: Tasks = {
+            id: genRanHex(this.size) as string,
+            title: this.newTask.value.title as string,
+            name: this.newTask.value.name as string,
+            deadline: this.newTask.value.deadline as string,
+            priority: this.newTask.value.priority as Priorities,
+            status: this.newTask.value.status as Statuses,
+            executor: this.newTask.value.executor as string,
+        };
 
-      this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
-      this.taskManagementService.sendTaskToServer(taskSubmit);
+        this.store.dispatch(addTaskAction({ newTask: taskSubmit }));
+        this.taskManagementService.sendTaskToServer(taskSubmit);
 
-      this.matSnackBar.open("task created", "OK", {
-        duration: 2000,
-      });
+        this.matSnackBar.open("task created", "OK", {
+            duration: 2000,
+        });
 
-      this.router.navigate([""]);
+        this.router.navigate([""]);
     }
 }

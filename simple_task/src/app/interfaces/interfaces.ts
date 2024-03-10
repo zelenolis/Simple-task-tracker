@@ -25,8 +25,8 @@ export enum Priorities {
 }
 
 export enum SortTypes {
-  default = "default",
-  status = "status",
-  executor = "executor",
-  deadline = "deadline",
+    default = "default",
+    status = "status",
+    executor = "executor",
+    deadline = "deadline",
 }

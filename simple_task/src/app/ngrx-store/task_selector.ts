@@ -10,6 +10,6 @@ export const selectAllTasks = createSelector(
 );
 
 export const selectTaskById = (id: string) => createSelector(
-  storeFeatureSelector,
-  (state) => state.items.find((task) => task.id === id)
+    storeFeatureSelector,
+    (state) => state.items.find((task) => task.id === id)
 );

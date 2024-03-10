@@ -1,4 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
+
 import { TaskList } from "../interfaces/interfaces";
 import { addTaskAction, removeTaskAction, updateTaskAction } from "./task_actions";
 

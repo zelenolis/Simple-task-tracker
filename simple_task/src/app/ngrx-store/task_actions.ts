@@ -1,4 +1,5 @@
 import { createAction, props } from "@ngrx/store";
+
 import { Tasks } from "../interfaces/interfaces";
 
 export enum StoreActionsType {
@@ -13,11 +14,11 @@ export const addTaskAction = createAction(
 );
 
 export const removeTaskAction = createAction(
-  StoreActionsType.removeTask,
-  props<{ taskId: string }>()
+    StoreActionsType.removeTask,
+    props<{ taskId: string }>()
 );
 
 export const updateTaskAction = createAction(
-  StoreActionsType.updTask,
-  props<{ taskId: string, updTask: Tasks }>()
+    StoreActionsType.updTask,
+    props<{ taskId: string, updTask: Tasks }>()
 );

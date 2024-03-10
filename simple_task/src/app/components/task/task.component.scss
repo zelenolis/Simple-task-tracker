@@ -6,7 +6,8 @@
   width: 95%;
   margin: auto;
   max-width: 800px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
 
   &:hover {
     cursor: pointer;
@@ -27,7 +28,6 @@
   @media screen and (max-width: 450px) {
     grid-template-columns: 1fr 1fr 1fr 2fr;
   }
-
 }
 
 .task_deadline {
@@ -44,11 +44,10 @@
     margin-bottom: 3px;
   }
 
-  @media screen and (max-width: 500px){
+  @media screen and (max-width: 500px) {
     & p {
       font-size: 0.7rem;
     }
-
   }
 }
 

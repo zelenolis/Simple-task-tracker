@@ -60,9 +60,16 @@
 
 .task_inputs {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  row-gap: 1vh;
+  width: 100%;
+  margin: 0 0 2vh 0;
+
+  & select {
+    width: 100%;
+  }
 }
 
 .task_nowrap {
