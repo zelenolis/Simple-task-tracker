@@ -19,9 +19,13 @@ Stack: Angular 17, RxJs, NgRx, Typescript, Angular Material, SCSS.
 - logout also clears all local storage's data.
 
 ### Development server
-- select target with: `cd simple_task`,
+- clone the repository,
+- select target folder with: `cd simple_task`,
+- install dependencies running: `npm i --legacy-peer-deps`,
 - run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ### Build
+- clone the repository
 - select target with: `cd simple_task`,
+- install dependencies running: `npm i --legacy-peer-deps`,
 - run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
