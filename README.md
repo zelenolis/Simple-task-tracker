@@ -21,12 +21,14 @@ Stack: Angular 17, RxJs, NgRx, Typescript, Angular Material, SCSS.
 
 ### Development server
 - clone the repository,
+- select `dev` branch,
 - select target folder with: `cd simple_task`,
 - install dependencies running: `npm i --legacy-peer-deps`,
 - run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ### Build
-- clone the repository
+- clone the repository,
+- select `dev` branch,
 - select target with: `cd simple_task`,
 - install dependencies running: `npm i --legacy-peer-deps`,
 - run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
